@@ -8,7 +8,7 @@
 
 [Максим Козлов](https://github.com/maxim-kozlov) - [@kbsjvxvdcshj](https://t.me/kbsjvxvdcshj)
 
-<img src="https://user-images.githubusercontent.com/33571011/153729120-3ef2a0de-b424-494e-bbb4-06497264efbc.png" width="250">
+<img src="https://user-images.githubusercontent.com/33571011/153729340-792d1ae1-26b9-41cf-9d2d-728c2f703a83.png" width="250">
 
 ---
 
