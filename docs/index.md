@@ -1,5 +1,5 @@
 [ТЗ](./specification.md)
 
-[Регламент](./codestyle.md)
+[Регламенты кодирования](./codestyle.md)
 
 [Участники команды](./contributors.md)
