@@ -1,4 +1,4 @@
-## Оформить в разделе документации:
+## Регламенты кодирования
 
 ### правила именования переменных
 * [stylesheet](https://github.com/uber-go/guide/blob/master/style.md)
