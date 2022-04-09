@@ -145,7 +145,7 @@
 - «Уклонение»
 
 ### Стратегия:
-- Учёт OpenSource продуктов, в которых возможны малвари, шифровальщики и т.п. [Ссылка на список опасных продуктов](https://github.com/RIAEvangelist/node-ipc/blob/847047cf7f81ab08352038b2204f0e7633449580/dao/ssl-geospec.js);
+- Учёт OpenSource продуктов, в которых возможны малвари, шифровальщики и т.п. [Ссылка на список опасных продуктов](https://docs.google.com/spreadsheets/d/1H3xPB4PgWeFcHjZ7NOPtrcya_Ua4jUolWm-7z9-jSpQ/htmlview?usp=sharing&pru=AAABf7qkysY*4LAvszFh2bLcVv_Pnp4xuA#);
 - Использовать версии до появления вредоносного ПО;
 - Возможно переход на другой аналогичный продукт;
 
