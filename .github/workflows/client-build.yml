@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies and build project
         working-directory: client
         run: |
-          npm install
+          npm ci
           npm run build
           npm run lint
           npm run test:unit
