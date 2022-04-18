@@ -6,10 +6,10 @@ on:
     branches:
       - main
 
-name: server-tests
+name: server
 jobs:
-  lint:
-    name: Checking style
+  check-style:
+    name: check-style
     runs-on: ubuntu-latest
     steps:
       - name: Install Go
@@ -25,8 +25,8 @@ jobs:
         with:
           working-directory: server
 
-  test:
-    name: Testing
+  testing:
+    name: testing
     runs-on: ubuntu-latest
     steps:
       - name: Install Go

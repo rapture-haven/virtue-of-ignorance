@@ -6,10 +6,10 @@ on:
     branches:
       - main
 
-name: client-build
+name: client
 jobs:
   client-build:
-    name: Build client
+    name: client-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 16
           cache: npm
+          working-directory: client
 
       - name: Install dependencies
         run: npm install
