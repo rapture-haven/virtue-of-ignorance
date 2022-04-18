@@ -9,25 +9,19 @@ on:
 name: client
 jobs:
   client-build:
-    name: client-build
+    name: Client build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-        working-directory: client
         with:
           node-version: 16
           cache: npm
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies and build project
         working-directory: client
-
-      - run: npm run build
-        working-directory: client
-
-      - run: npm run format-check
-        working-directory: client
-
-      - run: npm test
-        working-directory: client
+        run: |
+          npm install
+          npm run build
+          npm run format-check
+          npm test
