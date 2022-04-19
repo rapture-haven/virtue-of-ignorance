@@ -23,6 +23,7 @@ jobs:
       - name: Install dependencies and build project
         working-directory: client
         run: |
+          npm i --package-lock-only
           npm ci
           npm run build
           npm run lint
