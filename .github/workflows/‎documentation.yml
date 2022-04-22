@@ -14,9 +14,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Generate GoDoc
+      working-directory: server
       uses: ktr0731/godoc-action@v0.1.0
-      with:
-          working-directory: server
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push changes
