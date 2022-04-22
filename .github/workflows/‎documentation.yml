@@ -14,11 +14,9 @@ jobs:
     name: Server documentation
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v1
     - name: Generate GoDoc
       uses: ktr0731/godoc-action@v0.1.0
-      with:
-          entryPoint: server
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push changes
