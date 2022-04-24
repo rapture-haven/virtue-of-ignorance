@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 export function elementRequestFullscreen(el: HTMLElement) {
     if (typeof el.requestFullscreen === 'function') {
         el.requestFullscreen()
@@ -53,3 +53,4 @@ export function onFullscreenChange(el: HTMLElement, fn: () => void) {
         el.onwebkitfullscreenchange = fn
     }
 }
+/* eslint-enable @typescript-eslint/ban-ts-comment */

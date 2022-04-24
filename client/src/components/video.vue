@@ -187,6 +187,7 @@
   import Resolution from './resolution.vue'
   import Clipboard from './clipboard.vue'
 
+  // eslint-disable-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   import GuacamoleKeyboard from '~/utils/guacamole-keyboard.ts'
 
@@ -288,6 +289,7 @@
     }
 
     get pip_available() {
+      // eslint-disable-line @typescript-eslint/ban-ts-comment
       //@ts-ignore
       return typeof document.createElement('video').requestPictureInPicture === 'function'
     }
@@ -364,6 +366,7 @@
       if ('srcObject' in this._video) {
         this._video.srcObject = stream
       } else {
+        // eslint-disable-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         this._video.src = window.URL.createObjectURL(this.stream) // for older browsers
       }
@@ -576,6 +579,7 @@
     }
 
     requestPictureInPicture() {
+      // eslint-disable-line @typescript-eslint/ban-ts-comment
       //@ts-ignore
       this._video.requestPictureInPicture()
       this.onResize()

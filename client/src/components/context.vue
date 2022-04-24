@@ -135,6 +135,7 @@
   import { Component, Ref, Watch, Vue } from 'vue-property-decorator'
   import { Member } from '~/virtue-of-ignorance/types'
 
+  // eslint-disable-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   import { VueContext } from 'vue-context'
   import Avatar from './avatar.vue'
