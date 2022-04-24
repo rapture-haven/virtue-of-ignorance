@@ -34,10 +34,7 @@ class VueSweetalert2 {
     for (methodName in Swal) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      if (
-        Object.prototype.hasOwnProperty.call(Swal, methodName) &&
-        typeof Swal[methodName] === "function"
-      ) {
+      if (Object.prototype.hasOwnProperty.call(Swal, methodName) && typeof Swal[methodName] === "function") {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         swalFunction[methodName] = ((method) => {
