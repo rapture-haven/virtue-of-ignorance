@@ -4,8 +4,15 @@
       <div v-if="!hideControls" class="header-container">
           <virtue-header />
       </div>
+      <div v-if="!hideControls" class="room-container">
+          <div class="room-menu">
+            <div class="settings">
+              <virtue-menu />
+            </div>
+          </div>
+        </div>
     </main>
-    <virtue-settings v-if="!hideControls && side" />
+    <virtue-side v-if="!hideControls && side" />
     <virtue-connect v-if="!connected" />
     <notifications
       group="virtue"
@@ -44,14 +51,16 @@ import { Vue, Component, Ref, Watch } from "vue-property-decorator";
 
 import Connect from "@/components/connect.vue";
 import Header from '@/components/header.vue'
-import Settings from '~/components/settings.vue'
+import Side from '~/components/side.vue'
+import Menu from '~/components/menu.vue'
 
 @Component({
   name: "virtue",
   components: {
     "virtue-connect": Connect,
     'virtue-header': Header,
-    'virtue-settings': Settings,
+    'virtue-side': Side,
+    'virtue-menu': Menu,
   },
 })
 export default class extends Vue {
