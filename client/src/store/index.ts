@@ -5,6 +5,7 @@ import { get, set } from "@/utils/localstorage";
 import { EVENT } from "@/virtue-of-ignorance/events";
 import { AdminLockResource } from "@/virtue-of-ignorance/messages";
 
+import * as video from './video'
 import * as remote from './remote'
 import * as user from './user'
 import * as settings from './settings'
@@ -100,7 +101,7 @@ export const storePattern = {
   state: state,
   mutations: mutations,
   actions: actions,
-  modules: { user, remote, settings, client },
+  modules: { video, user, remote, settings, client },
 };
 
 Vue.use(Vuex);
