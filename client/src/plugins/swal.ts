@@ -31,21 +31,23 @@ class VueSweetalert2 {
 
     let methodName: string | number | symbol;
 
+    /* eslint-disable @typescript-eslint/ban-ts-comment */
     for (methodName in Swal) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      if (Object.prototype.hasOwnProperty.call(Swal, methodName) && typeof Swal[methodName] === "function") {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+      if (
+        Object.prototype.hasOwnProperty.call(Swal, methodName) &&
+        /* @ts-ignore */
+        typeof Swal[methodName] === "function"
+      ) {
+        /* @ts-ignore */
         swalFunction[methodName] = ((method) => {
           return (...args: any[]) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
+            /* @ts-ignore */
             return Swal[method](...args);
           };
         })(methodName);
       }
     }
+    /* eslint-enable @typescript-eslint/ban-ts-comment */
 
     vue["swal"] = swalFunction;
 
