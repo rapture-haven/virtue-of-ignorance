@@ -9,6 +9,9 @@
             <div class="settings">
               <virtue-menu />
             </div>
+            <div class="controls">
+              <virtue-controls :shakeKbd="shakeKbd" />
+            </div>
           </div>
         </div>
     </main>
@@ -132,6 +135,7 @@ import Connect from "@/components/connect.vue";
 import Header from '@/components/header.vue'
 import Side from '~/components/side.vue'
 import Menu from '~/components/menu.vue'
+import Controls from '~/components/controls.vue'
 
 @Component({
   name: "virtue",
@@ -140,9 +144,12 @@ import Menu from '~/components/menu.vue'
     'virtue-header': Header,
     'virtue-side': Side,
     'virtue-menu': Menu,
+    'virtue-controls': Controls,
   },
 })
 export default class extends Vue {
+  shakeKbd = false
+
   get hideControls() {
       return !!new URL(location.href).searchParams.get('cast')
   }
@@ -150,9 +157,15 @@ export default class extends Vue {
   @Watch('hideControls', { immediate: true })
   onHideControls(enabled: boolean) {
     if (enabled) {
-      // this.$accessor.video.setMuted(false)
-      // this.$accessor.settings.setSound(false)
+      this.$accessor.video.setMuted(false)
     }
+  }
+
+  controlAttempt() {
+    if (this.shakeKbd || this.$accessor.remote.hosted) return
+
+    this.shakeKbd = true
+    window.setTimeout(() => (this.shakeKbd = false), 5000)
   }
 
   get about() {
