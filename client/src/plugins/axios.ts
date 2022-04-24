@@ -1,25 +1,25 @@
-import { PluginObject } from 'vue'
-import axios, { AxiosStatic } from 'axios'
+import { PluginObject } from "vue";
+import axios, { AxiosStatic } from "axios";
 
 declare global {
-  const $http: AxiosStatic
+  const $http: AxiosStatic;
 
   interface Window {
-    $http: AxiosStatic
+    $http: AxiosStatic;
   }
 }
 
-declare module 'vue/types/vue' {
+declare module "vue/types/vue" {
   interface Vue {
-    $http: AxiosStatic
+    $http: AxiosStatic;
   }
 }
 
 const plugin: PluginObject<undefined> = {
   install(Vue) {
-    window.$http = axios
-    Vue.prototype.$http = window.$http
+    window.$http = axios;
+    Vue.prototype.$http = window.$http;
   },
-}
+};
 
-export default plugin
+export default plugin;

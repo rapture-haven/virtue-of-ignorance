@@ -1,4 +1,4 @@
-import GuacamoleKeyboard from './guacamole-keyboard.js'
+import GuacamoleKeyboard from "./guacamole-keyboard.js";
 
 export interface GuacamoleKeyboardInterface {
   /**
@@ -10,7 +10,7 @@ export interface GuacamoleKeyboardInterface {
    * @return {Boolean} true if the key event should be allowed through to the
    *                   browser, false otherwise.
    */
-  onkeydown?: (keysym: number) => boolean
+  onkeydown?: (keysym: number) => boolean;
 
   /**
    * Fired whenever the user releases a key with the element associated
@@ -19,7 +19,7 @@ export interface GuacamoleKeyboardInterface {
    * @event
    * @param {Number} keysym The keysym of the key being released.
    */
-  onkeyup?: (keysym: number) => void
+  onkeyup?: (keysym: number) => void;
 
   /**
    * Marks a key as pressed, firing the keydown event if registered. Key
@@ -30,14 +30,14 @@ export interface GuacamoleKeyboardInterface {
    * @param {Number} keysym The keysym of the key to press.
    * @return {Boolean} true if event should NOT be canceled, false otherwise.
    */
-  press: (keysym: number) => boolean
+  press: (keysym: number) => boolean;
 
   /**
    * Marks a key as released, firing the keyup event if registered.
    *
    * @param {Number} keysym The keysym of the key to release.
    */
-  release: (keysym: number) => void
+  release: (keysym: number) => void;
 
   /**
    * Presses and releases the keys necessary to type the given string of
@@ -46,13 +46,13 @@ export interface GuacamoleKeyboardInterface {
    * @param {String} str
    *     The string to type.
    */
-  type: (str: string) => void
+  type: (str: string) => void;
 
   /**
    * Resets the state of this keyboard, releasing all keys, and firing keyup
    * events for each released key.
    */
-  reset: () => void
+  reset: () => void;
 
   /**
    * Attaches event listeners to the given Element, automatically translating
@@ -64,13 +64,13 @@ export interface GuacamoleKeyboardInterface {
    *     The Element to attach event listeners to for the sake of handling
    *     key or input events.
    */
-  listenTo: (element: Element | Document) => void
+  listenTo: (element: Element | Document) => void;
 }
 
 export default function (element?: Element): GuacamoleKeyboardInterface {
-  const Keyboard = {}
+  const Keyboard = {};
 
-  GuacamoleKeyboard.bind(Keyboard, element)()
+  GuacamoleKeyboard.bind(Keyboard, element)();
 
-  return Keyboard as GuacamoleKeyboardInterface
+  return Keyboard as GuacamoleKeyboardInterface;
 }

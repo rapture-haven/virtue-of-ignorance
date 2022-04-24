@@ -6,12 +6,21 @@
         <span>virtue</span>
       </div>
       <form class="message" v-if="!connecting" @submit.stop.prevent="connect">
-        <span v-if="!autoPassword">{{ $t('connect.login_title') }}</span>
-        <span v-else>{{ $t('connect.invitation_title') }}</span>
-        <input type="text" :placeholder="$t('connect.displayname')" v-model="displayname" />
-        <input type="password" :placeholder="$t('connect.password')" v-model="password" v-if="!autoPassword" />
+        <span v-if="!autoPassword">{{ $t("connect.login_title") }}</span>
+        <span v-else>{{ $t("connect.invitation_title") }}</span>
+        <input
+          type="text"
+          :placeholder="$t('connect.displayname')"
+          v-model="displayname"
+        />
+        <input
+          type="password"
+          :placeholder="$t('connect.password')"
+          v-model="password"
+          v-if="!autoPassword"
+        />
         <button type="submit" @click.stop.prevent="login">
-          {{ $t('connect.connect') }}
+          {{ $t("connect.connect") }}
         </button>
       </form>
       <div class="loader" v-if="connecting">
@@ -213,8 +222,8 @@ export default class extends Vue {
 
     if (this.displayname == "") {
       this.$swal({
-        title: this.$t('connect.error') as string,
-          text: this.$t('connect.empty_displayname') as string,
+        title: this.$t("connect.error") as string,
+        text: this.$t("connect.empty_displayname") as string,
         icon: "error",
       });
       return;

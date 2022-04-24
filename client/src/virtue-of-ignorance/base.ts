@@ -65,7 +65,7 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
 
     console.log("connected");
     this._connected = true;
-    this._id = '123';
+    this._id = "123";
     this[EVENT.CONNECTED]();
     // TODO: connect
     // throw new Error('Method not implemented.')
@@ -73,8 +73,8 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
 
   protected disconnect() {
     if (this._timeout) {
-      clearTimeout(this._timeout)
-      this._timeout = undefined
+      clearTimeout(this._timeout);
+      this._timeout = undefined;
     }
 
     // TODO ws, channel, peer
@@ -84,10 +84,15 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
     this._id = "";
   }
 
-  public sendData(event: "wheel" | "mousemove", data: { x: number; y: number }): void;
-  public sendData(event: "mousedown" | "mouseup" | "keydown" | "keyup", data: { key: number }): void;
+  public sendData(
+    event: "wheel" | "mousemove",
+    data: { x: number; y: number }
+  ): void;
+  public sendData(
+    event: "mousedown" | "mouseup" | "keydown" | "keyup",
+    data: { key: number }
+  ): void;
   public sendData(event: string, data: any) {
-    
     if (!this.connected) {
       this.emit("warn", `attempting to send data while disconnected`);
       return;

@@ -55,34 +55,34 @@ export class VirtueClient
   }
 
   private cleanup() {
-    this.$accessor.setConnected(false)
-    this.$accessor.remote.reset()
-    this.$accessor.user.reset()
-    this.$accessor.video.reset()
+    this.$accessor.setConnected(false);
+    this.$accessor.remote.reset();
+    this.$accessor.user.reset();
+    this.$accessor.video.reset();
   }
-  
+
   login(password: string, displayname: string) {
     this.connect(this.url, password, displayname);
   }
 
   logout() {
     this.disconnect();
-    this.cleanup()
+    this.cleanup();
     this.$vue.$swal({
-      title: this.$vue.$t('connection.logged_out'),
-      icon: 'info',
-      confirmButtonText: this.$vue.$t('connection.button_confirm') as string,
-    })
+      title: this.$vue.$t("connection.logged_out"),
+      icon: "info",
+      confirmButtonText: this.$vue.$t("connection.button_confirm") as string,
+    });
   }
 
   protected [EVENT.RECONNECTING](): void {
     this.$vue.$notify({
-      group: 'virtue',
-      type: 'warning',
-      title: this.$vue.$t('connection.reconnecting') as string,
+      group: "virtue",
+      type: "warning",
+      title: this.$vue.$t("connection.reconnecting") as string,
       duration: 5000,
       speed: 1000,
-    })
+    });
   }
 
   protected [EVENT.CONNECTING](): void {
@@ -90,7 +90,7 @@ export class VirtueClient
   }
 
   protected [EVENT.CONNECTED](): void {
-    this.$accessor.user.setMember(this.id)
+    this.$accessor.user.setMember(this.id);
     this.$accessor.setConnected(true);
 
     this.$vue.$notify({
@@ -108,21 +108,21 @@ export class VirtueClient
   }
 
   protected [EVENT.DISCONNECTED](reason?: Error): void {
-    this.cleanup()
+    this.cleanup();
 
     this.$vue.$notify({
-      group: 'virtue',
-      type: 'error',
-      title: this.$vue.$t('connection.disconnected') as string,
+      group: "virtue",
+      type: "error",
+      title: this.$vue.$t("connection.disconnected") as string,
       text: reason ? reason.message : undefined,
       duration: 5000,
       speed: 1000,
-    })
+    });
   }
 
   protected [EVENT.TRACK](event: RTCTrackEvent): void {
     throw new Error("Method not implemented.");
   }
 
-  protected [EVENT.DATA](data: any): void { }
+  protected [EVENT.DATA](data: any): void {}
 }

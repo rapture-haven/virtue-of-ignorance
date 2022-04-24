@@ -24,57 +24,57 @@
 </template>
 
 <style lang="scss" scoped>
-  ul {
-    li {
-      display: inline-block;
-      margin-right: 10px;
-
-      i {
-        font-size: 24px;
-        cursor: pointer;
-      }
-    }
-  }
-
-  select {
-    appearance: none;
-    background-color: $background-tertiary;
-    border: 1px solid $background-primary;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    height: 24px;
-    vertical-align: text-bottom;
+ul {
+  li {
     display: inline-block;
+    margin-right: 10px;
 
-    option {
-      font-weight: normal;
-      color: $text-normal;
-      background-color: $background-tertiary;
-    }
-
-    &:hover {
-      border: 1px solid $background-primary;
+    i {
+      font-size: 24px;
+      cursor: pointer;
     }
   }
+}
+
+select {
+  appearance: none;
+  background-color: $background-tertiary;
+  border: 1px solid $background-primary;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 24px;
+  vertical-align: text-bottom;
+  display: inline-block;
+
+  option {
+    font-weight: normal;
+    color: $text-normal;
+    background-color: $background-tertiary;
+  }
+
+  &:hover {
+    border: 1px solid $background-primary;
+  }
+}
 </style>
 
 <script lang="ts">
-  import { Component, Ref, Watch, Vue } from 'vue-property-decorator'
-  import { messages } from '~/locale'
+import { Component, Ref, Watch, Vue } from "vue-property-decorator";
+import { messages } from "~/locale";
 
-  @Component({ name: 'virtue-menu' })
-  export default class extends Vue {
-    get admin() {
-      return this.$accessor.user.admin
-    }
-
-    get langs() {
-      return Object.keys(messages)
-    }
-
-    about() {
-      this.$accessor.client.toggleAbout()
-    }
+@Component({ name: "virtue-menu" })
+export default class extends Vue {
+  get admin() {
+    return this.$accessor.user.admin;
   }
+
+  get langs() {
+    return Object.keys(messages);
+  }
+
+  about() {
+    this.$accessor.client.toggleAbout();
+  }
+}
 </script>

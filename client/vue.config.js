@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require("path");
 
 module.exports = {
   productionSourceMap: false,
@@ -11,17 +11,17 @@ module.exports = {
       },
     },
   },
-  publicPath: './',
-  assetsDir: './',
+  publicPath: "./",
+  assetsDir: "./",
   configureWebpack: {
     resolve: {
       alias: {
-        vue$: 'vue/dist/vue.esm.js',
-        '~': path.resolve(__dirname, 'src/'),
+        vue$: "vue/dist/vue.esm.js",
+        "~": path.resolve(__dirname, "src/"),
       },
     },
   },
   devServer: {
     disableHostCheck: true,
-  }
-}
+  },
+};

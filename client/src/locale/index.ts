@@ -1,5 +1,5 @@
-import * as ru from './ru-ru'
+import * as ru from "./ru-ru";
 
 export const messages = {
-  ru
-}
+  ru,
+};

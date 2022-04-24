@@ -4,7 +4,11 @@
       <li
         :key="i"
         @click="screenSet(conf)"
-        :class="[conf.width === width && conf.height === height && conf.rate === rate ? 'active' : '']"
+        :class="[
+          conf.width === width && conf.height === height && conf.rate === rate
+            ? 'active'
+            : '',
+        ]"
       >
         <i class="fas fa-desktop"></i>
         <span>{{ conf.width }}x{{ conf.height }}</span>
@@ -15,126 +19,126 @@
 </template>
 
 <style lang="scss" scoped>
-  .context {
+.context {
+  background-color: $background-floating;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  display: block;
+  margin: 0;
+  padding: 5px;
+  min-width: 150px;
+  z-index: 1500;
+  position: fixed;
+  list-style: none;
+  box-sizing: border-box;
+  max-height: calc(100% - 50px);
+  overflow-y: auto;
+  color: $interactive-normal;
+  user-select: none;
+  box-shadow: $elevation-high;
+  scrollbar-width: thin;
+  scrollbar-color: $background-secondary transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $background-secondary;
+    border: 2px solid $background-floating;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
     background-color: $background-floating;
-    background-clip: padding-box;
-    border-radius: 0.25rem;
-    display: block;
+  }
+
+  > li {
     margin: 0;
-    padding: 5px;
-    min-width: 150px;
-    z-index: 1500;
-    position: fixed;
-    list-style: none;
-    box-sizing: border-box;
-    max-height: calc(100% - 50px);
-    overflow-y: auto;
-    color: $interactive-normal;
-    user-select: none;
-    box-shadow: $elevation-high;
-    scrollbar-width: thin;
-    scrollbar-color: $background-secondary transparent;
+    position: relative;
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 3px;
 
-    &::-webkit-scrollbar {
-      width: 8px;
+    i {
+      margin-right: 10px;
     }
 
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
+    span {
+      flex-grow: 1;
     }
 
-    &::-webkit-scrollbar-thumb {
-      background-color: $background-secondary;
-      border: 2px solid $background-floating;
-      border-radius: 4px;
+    small {
+      font-size: 0.7em;
+      justify-self: flex-end;
+      align-self: flex-end;
     }
 
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: $background-floating;
-    }
-
-    > li {
-      margin: 0;
-      position: relative;
-      align-content: center;
-      display: flex;
-      flex-direction: row;
-      padding: 8px;
-      cursor: pointer;
-      border-radius: 3px;
-
-      i {
-        margin-right: 10px;
-      }
-
-      span {
-        flex-grow: 1;
-      }
-
-      small {
-        font-size: 0.7em;
-        justify-self: flex-end;
-        align-self: flex-end;
-      }
-
-      &.active,
-      &:hover,
-      &:focus {
-        text-decoration: none;
-        background-color: $background-modifier-hover;
-        color: $interactive-hover;
-      }
-
-      &:focus {
-        outline: 0;
-      }
+    &.active,
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      background-color: $background-modifier-hover;
+      color: $interactive-hover;
     }
 
     &:focus {
       outline: 0;
     }
   }
+
+  &:focus {
+    outline: 0;
+  }
+}
 </style>
 
 <script lang="ts">
-  import { Component, Ref, Watch, Vue } from 'vue-property-decorator'
-  import { ScreenResolution } from '~/virtue-of-ignorance/types'
-  
-  // eslint-disable-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  import { VueContext } from 'vue-context'
+import { Component, Ref, Watch, Vue } from "vue-property-decorator";
+import { ScreenResolution } from "~/virtue-of-ignorance/types";
 
-  @Component({
-    name: 'virtue-resolution',
-    components: {
-      'vue-context': VueContext,
-    },
-  })
-  export default class extends Vue {
-    @Ref('context') readonly context!: VueContext
+// eslint-disable-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { VueContext } from "vue-context";
 
-    get width() {
-      return this.$accessor.video.width
-    }
+@Component({
+  name: "virtue-resolution",
+  components: {
+    "vue-context": VueContext,
+  },
+})
+export default class extends Vue {
+  @Ref("context") readonly context!: VueContext;
 
-    get height() {
-      return this.$accessor.video.height
-    }
-
-    get rate() {
-      return this.$accessor.video.rate
-    }
-
-    get configurations() {
-      return this.$accessor.video.configurations
-    }
-
-    open(event: MouseEvent) {
-      this.context.open(event)
-    }
-
-    screenSet(resolution: ScreenResolution) {
-      this.$accessor.video.screenSet(resolution)
-    }
+  get width() {
+    return this.$accessor.video.width;
   }
+
+  get height() {
+    return this.$accessor.video.height;
+  }
+
+  get rate() {
+    return this.$accessor.video.rate;
+  }
+
+  get configurations() {
+    return this.$accessor.video.configurations;
+  }
+
+  open(event: MouseEvent) {
+    this.context.open(event);
+  }
+
+  screenSet(resolution: ScreenResolution) {
+    this.$accessor.video.screenSet(resolution);
+  }
+}
 </script>

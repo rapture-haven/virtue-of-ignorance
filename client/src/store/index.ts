@@ -5,11 +5,11 @@ import { get, set } from "@/utils/localstorage";
 import { EVENT } from "@/virtue-of-ignorance/events";
 import { AdminLockResource } from "@/virtue-of-ignorance/messages";
 
-import * as video from './video'
-import * as remote from './remote'
-import * as user from './user'
-import * as settings from './settings'
-import * as client from './client'
+import * as video from "./video";
+import * as remote from "./remote";
+import * as user from "./user";
+import * as settings from "./settings";
+import * as client from "./client";
 
 export const state = () => ({
   displayname: get<string>("displayname", ""),
@@ -60,7 +60,7 @@ export const actions = actionTree(
   { state, mutations },
   {
     initialise(store) {
-      accessor.settings.initialise()
+      accessor.settings.initialise();
     },
 
     lock(_, resource: AdminLockResource) {
