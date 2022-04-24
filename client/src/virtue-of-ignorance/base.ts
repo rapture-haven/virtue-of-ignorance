@@ -72,10 +72,16 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
   }
 
   protected disconnect() {
+    if (this._timeout) {
+      clearTimeout(this._timeout)
+      this._timeout = undefined
+    }
+
+    // TODO ws, channel, peer
+
     this._state = "disconnected";
     this._displayname = undefined;
     this._id = "";
-    throw new Error("Method not implemented.");
   }
 
   public sendData(
