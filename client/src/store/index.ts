@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { get, set } from '~/utils/localstorage'
 import { useAccessor, mutationTree, actionTree } from 'typed-vuex'
+import { get, set } from '@/utils/localstorage'
 
 export const state = () => ({
   displayname: get<string>('displayname', ''),
@@ -23,3 +23,12 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store(storePattern)
 export const accessor = useAccessor(store, storePattern)
+
+Vue.prototype.$accessor = accessor
+declare module 'vue/types/vue' {
+  interface Vue {
+    $accessor: typeof accessor
+  }
+}
+
+export default store
