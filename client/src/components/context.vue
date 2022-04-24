@@ -3,7 +3,7 @@
     <template slot-scope="child" v-if="child.data">
       <li class="header">
         <div class="user">
-          <neko-avatar class="avatar" :seed="child.data.member.displayname" :size="25" />
+          <virtue-avatar class="avatar" :seed="child.data.member.displayname" :size="25" />
           <strong>{{ child.data.member.displayname }}</strong>
         </div>
       </li>
@@ -140,10 +140,10 @@
   import Avatar from './avatar.vue'
 
   @Component({
-    name: 'neko-context',
+    name: 'virtue-context',
     components: {
       'vue-context': VueContext,
-      'neko-avatar': Avatar,
+      'virtue-avatar': Avatar,
     },
   })
   export default class extends Vue {

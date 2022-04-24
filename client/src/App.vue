@@ -4,6 +4,9 @@
       <div v-if="!hideControls" class="header-container">
           <virtue-header />
       </div>
+      <div class="video-container">
+        <virtue-video ref="video" :hideControls="hideControls" @control-attempt="controlAttempt" />
+      </div>
       <div v-if="!hideControls" class="room-container">
           <virtue-members />
           <div class="room-menu">
@@ -138,11 +141,13 @@ import Side from '~/components/side.vue'
 import Menu from '~/components/menu.vue'
 import Controls from '~/components/controls.vue'
 import Members from '~/components/members.vue'
+import Video from '~/components/video.vue'
 
 @Component({
   name: "virtue",
   components: {
     "virtue-connect": Connect,
+    'virtue-video': Video,
     'virtue-header': Header,
     'virtue-side': Side,
     'virtue-menu': Menu,

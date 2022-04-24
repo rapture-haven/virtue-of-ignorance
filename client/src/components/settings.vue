@@ -292,7 +292,7 @@
 <script lang="ts">
   import { Component, Ref, Watch, Vue } from 'vue-property-decorator'
 
-  @Component({ name: 'virtue-of-ignorance-settings' })
+  @Component({ name: 'virtue-settings' })
   export default class extends Vue {
     private broadcast_url: string = ''
 
