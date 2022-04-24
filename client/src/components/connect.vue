@@ -5,6 +5,15 @@
         <img src="@/assets/logo.png" alt="virtue" />
         <span>virtue</span>
       </div>
+      <form class="message" v-if="!connecting" @submit.stop.prevent="connect">
+        <span v-if="!autoPassword">Пожалуйста, войдите</span>
+        <span v-else>Вас пригласили в эту комнату</span>
+        <input type="text" placeholder="Введите ваше отображаемое имя" v-model="displayname" />
+        <input type="password" placeholder="Пароль" v-model="password" v-if="!autoPassword" />
+        <button type="submit" @click.stop.prevent="login">
+          Подключиться
+        </button>
+      </form>
     </div>
   </div>
 </template>
@@ -138,9 +147,7 @@ import { Component, Ref, Watch, Vue } from "vue-property-decorator";
 
 @Component({ name: "virtue-connect" })
 export default class extends Vue {
-  private autoPassword: string | null = new URL(location.href).searchParams.get(
-    "pwd"
-  );
+  private autoPassword: string | null = new URL(location.href).searchParams.get("pwd");
 
   private displayname: string = "";
   private password: string = "";
@@ -199,12 +206,12 @@ export default class extends Vue {
     }
 
     if (this.displayname == "") {
-      // this.$swal({
-      //   title: this.$t("connect.error") as string,
-      //   text: this.$t("connect.empty_displayname") as string,
-      //   icon: "error",
-      // });
-      // return;
+      this.$swal({
+        title: "Ошибка входа" as string,
+        text: "Отображаемое имя не может быть пустым." as string,
+        icon: "error",
+      });
+      return;
     }
 
     this.$accessor.login({ displayname: this.displayname, password });

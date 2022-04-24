@@ -26,6 +26,7 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
     protected _state: RTCIceConnectionState = 'disconnected'
     protected _id = ''
     protected _candidates: RTCIceCandidate[] = []
+    protected _connected = false;
 
     get id() {
         return this._id
@@ -44,6 +45,7 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
     }
 
     get connected() {
+        return this._connected;
         return this.peerConnected && this.socketOpen
     }
 
@@ -52,9 +54,12 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
 
         this._displayname = displayname;
         this[EVENT.CONNECTING]();
-
+        
+        console.log('connected');
+        this._connected = true;
+        this[EVENT.CONNECTED]()
         // TODO: connect
-        throw new Error('Method not implemented.')
+        // throw new Error('Method not implemented.')
     }
 
     protected disconnect() {

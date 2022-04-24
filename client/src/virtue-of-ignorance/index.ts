@@ -2,6 +2,7 @@ import Vue from 'vue'
 import EventEmitter from 'eventemitter3'
 import { BaseClient, BaseEvents } from './base'
 import { EVENT } from './events'
+import { accessor } from '@/store'
 
 import {
     SystemMessagePayload,
@@ -26,6 +27,7 @@ interface VirtueEvents extends BaseEvents { }
 
 export class VirtueClient extends BaseClient implements EventEmitter<VirtueEvents> {
     private $vue!: Vue
+    private $accessor!: typeof accessor
     private url!: string
 
     init(vue: Vue) {
@@ -39,6 +41,7 @@ export class VirtueClient extends BaseClient implements EventEmitter<VirtueEvent
 
     initWithURL(vue: Vue, url: string) {
         this.$vue = vue
+        this.$accessor = vue.$accessor
         this.url = url
     }
 
@@ -54,10 +57,24 @@ export class VirtueClient extends BaseClient implements EventEmitter<VirtueEvent
         throw new Error('Method not implemented.')
     }
     protected [EVENT.CONNECTING](): void {
-        throw new Error('Method not implemented.')
+        this.$accessor.setConnnecting()
     }
     protected [EVENT.CONNECTED](): void {
-        throw new Error('Method not implemented.')
+        // this.$accessor.user.setMember(this.id)
+        this.$accessor.setConnected(true)
+
+        this.$vue.$notify({
+            group: 'virtue',
+            clean: true,
+        })
+
+        this.$vue.$notify({ 
+            group: 'virtue',
+            type: 'success',
+            title: "Подключено" as string,
+            duration: 5000,
+            speed: 1000,
+        })
     }
     protected [EVENT.DISCONNECTED](reason?: Error): void {
         throw new Error('Method not implemented.')

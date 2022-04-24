@@ -1,5 +1,5 @@
 import { PluginObject } from 'vue'
-import { VirtueClient } from '~/virtue-of-ignorance'
+import { VirtueClient } from '@/virtue-of-ignorance'
 
 declare global {
   const $client: VirtueClient
