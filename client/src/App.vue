@@ -5,7 +5,7 @@
           <virtue-header />
       </div>
     </main>
-    <virtue-side v-if="!hideControls && side" />
+    <virtue-settings v-if="!hideControls && side" />
     <virtue-connect v-if="!connected" />
     <notifications
       group="virtue"
