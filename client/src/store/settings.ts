@@ -15,7 +15,7 @@ export const state = () => {
     scroll_invert: get<boolean>('scroll_invert', true),
     autoplay: get<boolean>('autoplay', true),
     ignore_emotes: get<boolean>('ignore_emotes', false),
-    keyboard_layout: get<string>('keyboard_layout', 'us'),
+    keyboard_layout: get<string>('keyboard_layout', 'ru'),
 
     keyboard_layouts_list: {} as KeyboardLayouts,
 

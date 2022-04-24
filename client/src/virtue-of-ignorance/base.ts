@@ -84,49 +84,39 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
     this._id = "";
   }
 
-  public sendData(
-    event: "wheel" | "mousemove",
-    data: { x: number; y: number }
-  ): void;
-  public sendData(
-    event: "mousedown" | "mouseup" | "keydown" | "keyup",
-    data: { key: number }
-  ): void;
+  public sendData(event: "wheel" | "mousemove", data: { x: number; y: number }): void;
+  public sendData(event: "mousedown" | "mouseup" | "keydown" | "keyup", data: { key: number }): void;
   public sendData(event: string, data: any) {
-    // TODO
+    
     if (!this.connected) {
       this.emit("warn", `attempting to send data while disconnected`);
       return;
     }
     this.emit("warn", `not implemented: ${event}`);
 
-    throw new Error("Method not implemented.");
+    // TODO
   }
 
   public sendMessage(event: WebSocketEvents, payload?: WebSocketPayloads) {
-    // TODO
     this.emit(
       "debug",
       `sending event '${event}' ${payload ? `with payload: ` : ""}`,
       payload
     );
-    throw new Error("Method not implemented.");
+    // TODO
   }
 
   public async createPeer(lite: boolean, servers: RTCIceServer[]) {
     this.emit("debug", `creating peer`);
     // TODO
-    throw new Error("Method not implemented.");
   }
 
   public async setRemoteOffer(sdp: string) {
     // TODO
-    throw new Error("Method not implemented.");
   }
 
   public async setRemoteAnswer(sdp: string) {
     // TODO
-    throw new Error("Method not implemented.");
   }
 
   private async onMessage(e: MessageEvent) {
@@ -139,7 +129,6 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
     );
 
     // TODO
-    throw new Error("Method not implemented.");
   }
 
   private onData(e: MessageEvent) {
