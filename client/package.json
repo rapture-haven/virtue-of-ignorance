@@ -16,6 +16,7 @@
     "v-tooltip": "^2.1.3",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
+    "vue-context": "^5.2.0",
     "vue-i18n": "^8.27.0",
     "vue-notification": "^1.3.20",
     "vue-property-decorator": "^9.1.2",

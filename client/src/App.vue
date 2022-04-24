@@ -5,6 +5,7 @@
           <virtue-header />
       </div>
       <div v-if="!hideControls" class="room-container">
+          <virtue-members />
           <div class="room-menu">
             <div class="settings">
               <virtue-menu />
@@ -136,6 +137,7 @@ import Header from '@/components/header.vue'
 import Side from '~/components/side.vue'
 import Menu from '~/components/menu.vue'
 import Controls from '~/components/controls.vue'
+import Members from '~/components/members.vue'
 
 @Component({
   name: "virtue",
@@ -145,6 +147,7 @@ import Controls from '~/components/controls.vue'
     'virtue-side': Side,
     'virtue-menu': Menu,
     'virtue-controls': Controls,
+    'virtue-members': Members,
   },
 })
 export default class extends Vue {
