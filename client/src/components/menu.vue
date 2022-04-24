@@ -63,7 +63,7 @@
   import { Component, Ref, Watch, Vue } from 'vue-property-decorator'
   import { messages } from '~/locale'
 
-  @Component({ name: 'neko-menu' })
+  @Component({ name: 'virtue-menu' })
   export default class extends Vue {
     get admin() {
       return this.$accessor.user.admin
