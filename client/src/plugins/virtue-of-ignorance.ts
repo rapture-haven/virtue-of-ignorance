@@ -1,30 +1,30 @@
-import { PluginObject } from 'vue'
-import { VirtueClient } from '@/virtue-of-ignorance'
+import { PluginObject } from "vue";
+import { VirtueClient } from "@/virtue-of-ignorance";
 
 declare global {
-  const $client: VirtueClient
+  const $client: VirtueClient;
 
   interface Window {
-    $client: VirtueClient
+    $client: VirtueClient;
   }
 }
 
-declare module 'vue/types/vue' {
+declare module "vue/types/vue" {
   interface Vue {
-    $client: VirtueClient
+    $client: VirtueClient;
   }
 }
 
 const plugin: PluginObject<undefined> = {
   install(Vue) {
     window.$client = new VirtueClient()
-      .on('error', window.$log.error)
-      .on('warn', window.$log.warn)
-      .on('info', window.$log.info)
-      .on('debug', window.$log.debug)
+      .on("error", window.$log.error)
+      .on("warn", window.$log.warn)
+      .on("info", window.$log.info)
+      .on("debug", window.$log.debug);
 
-    Vue.prototype.$client = window.$client
+    Vue.prototype.$client = window.$client;
   },
-}
+};
 
-export default plugin
+export default plugin;

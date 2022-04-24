@@ -8,11 +8,18 @@
       <form class="message" v-if="!connecting" @submit.stop.prevent="connect">
         <span v-if="!autoPassword">Пожалуйста, войдите</span>
         <span v-else>Вас пригласили в эту комнату</span>
-        <input type="text" placeholder="Введите ваше отображаемое имя" v-model="displayname" />
-        <input type="password" placeholder="Пароль" v-model="password" v-if="!autoPassword" />
-        <button type="submit" @click.stop.prevent="login">
-          Подключиться
-        </button>
+        <input
+          type="text"
+          placeholder="Введите ваше отображаемое имя"
+          v-model="displayname"
+        />
+        <input
+          type="password"
+          placeholder="Пароль"
+          v-model="password"
+          v-if="!autoPassword"
+        />
+        <button type="submit" @click.stop.prevent="login">Подключиться</button>
       </form>
     </div>
   </div>
@@ -147,10 +154,12 @@ import { Component, Ref, Watch, Vue } from "vue-property-decorator";
 
 @Component({ name: "virtue-connect" })
 export default class extends Vue {
-  private autoPassword: string | null = new URL(location.href).searchParams.get("pwd");
+  private autoPassword: string | null = new URL(location.href).searchParams.get(
+    "pwd"
+  );
 
-  private displayname: string = "";
-  private password: string = "";
+  private displayname = "";
+  private password = "";
 
   mounted() {
     // auto-password fill

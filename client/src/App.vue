@@ -33,19 +33,19 @@
 </style>
 
 <script lang="ts">
-  import { Vue, Component, Ref, Watch } from 'vue-property-decorator'
+import { Vue, Component, Ref, Watch } from "vue-property-decorator";
 
-  import Connect from '@/components/connect.vue'
-  // 
-  @Component({
-    name: 'virtue',
-    components: {
-      'virtue-connect': Connect,
-    },
-  })
-  export default class extends Vue {
-    get connected() {
-      return this.$accessor.connected
-    }
+import Connect from "@/components/connect.vue";
+//
+@Component({
+  name: "virtue",
+  components: {
+    "virtue-connect": Connect,
+  },
+})
+export default class extends Vue {
+  get connected() {
+    return this.$accessor.connected;
   }
+}
 </script>

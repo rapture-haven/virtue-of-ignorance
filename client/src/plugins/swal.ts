@@ -1,58 +1,63 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-import { SweetAlertOptions } from 'sweetalert2'
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import { SweetAlertOptions } from "sweetalert2";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
-type VueSwalInstance = typeof Swal.fire
+type VueSwalInstance = typeof Swal.fire;
 
-declare module 'vue/types/vue' {
+declare module "vue/types/vue" {
   interface Vue {
-    $swal: VueSwalInstance
+    $swal: VueSwalInstance;
   }
 
   interface VueConstructor<V extends Vue = Vue> {
-    swal: VueSwalInstance
+    swal: VueSwalInstance;
   }
 }
 
-interface VueSweetalert2Options extends SweetAlertOptions {
-  // includeCss?: boolean;
-}
+type VueSweetalert2Options = SweetAlertOptions;
 
 class VueSweetalert2 {
   static install(vue: Vue | any, options?: VueSweetalert2Options): void {
     const swalFunction = (...args: [SweetAlertOptions]) => {
       if (options) {
-        const mixed = Swal.mixin(options)
+        const mixed = Swal.mixin(options);
 
-        return mixed.fire(...args)
+        return mixed.fire(...args);
       }
 
-      return Swal.fire(...args)
-    }
+      return Swal.fire(...args);
+    };
 
-    let methodName: string | number | symbol
+    let methodName: string | number | symbol;
 
     for (methodName in Swal) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      if (Object.prototype.hasOwnProperty.call(Swal, methodName) && typeof Swal[methodName] === 'function') {
+      if (
+        Object.prototype.hasOwnProperty.call(Swal, methodName) &&
+        typeof Swal[methodName] === "function"
+      ) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         swalFunction[methodName] = ((method) => {
           return (...args: any[]) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            return Swal[method](...args)
-          }
-        })(methodName)
+            return Swal[method](...args);
+          };
+        })(methodName);
       }
     }
 
-    vue['swal'] = swalFunction
+    vue["swal"] = swalFunction;
 
     // add the instance method
-    if (!vue.prototype.hasOwnProperty('$swal')) {
-      vue.prototype.$swal = swalFunction
+    // eslint-disable-next-line no-prototype-builtins
+    if (!vue.prototype.hasOwnProperty("$swal")) {
+      vue.prototype.$swal = swalFunction;
     }
   }
 }
 
-export default VueSweetalert2
+export default VueSweetalert2;
