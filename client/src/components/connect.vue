@@ -6,21 +6,18 @@
         <span>virtue</span>
       </div>
       <form class="message" v-if="!connecting" @submit.stop.prevent="connect">
-        <span v-if="!autoPassword">Пожалуйста, войдите</span>
-        <span v-else>Вас пригласили в эту комнату</span>
-        <input
-          type="text"
-          placeholder="Введите ваше отображаемое имя"
-          v-model="displayname"
-        />
-        <input
-          type="password"
-          placeholder="Пароль"
-          v-model="password"
-          v-if="!autoPassword"
-        />
-        <button type="submit" @click.stop.prevent="login">Подключиться</button>
+        <span v-if="!autoPassword">{{ $t('connect.login_title') }}</span>
+        <span v-else>{{ $t('connect.invitation_title') }}</span>
+        <input type="text" :placeholder="$t('connect.displayname')" v-model="displayname" />
+        <input type="password" :placeholder="$t('connect.password')" v-model="password" v-if="!autoPassword" />
+        <button type="submit" @click.stop.prevent="login">
+          {{ $t('connect.connect') }}
+        </button>
       </form>
+      <div class="loader" v-if="connecting">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -216,8 +213,8 @@ export default class extends Vue {
 
     if (this.displayname == "") {
       this.$swal({
-        title: "Ошибка входа" as string,
-        text: "Отображаемое имя не может быть пустым." as string,
+        title: this.$t('connect.error') as string,
+          text: this.$t('connect.empty_displayname') as string,
         icon: "error",
       });
       return;
