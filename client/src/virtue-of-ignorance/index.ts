@@ -77,7 +77,7 @@ export class VirtueClient
 
   protected [EVENT.RECONNECTING](): void {
     this.$vue.$notify({
-      group: 'neko',
+      group: 'virtue',
       type: 'warning',
       title: this.$vue.$t('connection.reconnecting') as string,
       duration: 5000,
@@ -111,7 +111,7 @@ export class VirtueClient
     this.cleanup()
 
     this.$vue.$notify({
-      group: 'neko',
+      group: 'virtue',
       type: 'error',
       title: this.$vue.$t('connection.disconnected') as string,
       text: reason ? reason.message : undefined,
@@ -123,6 +123,6 @@ export class VirtueClient
   protected [EVENT.TRACK](event: RTCTrackEvent): void {
     throw new Error("Method not implemented.");
   }
-  
+
   protected [EVENT.DATA](data: any): void { }
 }

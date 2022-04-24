@@ -32,7 +32,7 @@
   import { Vue, Component, Prop } from 'vue-property-decorator'
 
   @Component({
-    name: 'neko-avatar',
+    name: 'virtue-avatar',
   })
   export default class extends Vue {
     @Prop(String) readonly seed: string | undefined
