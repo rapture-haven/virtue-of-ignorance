@@ -1,44 +1,44 @@
 import {
-    EVENT,
-    WebSocketEvents,
-    ControlEvents,
-    ScreenEvents,
-    AdminEvents,
-} from './events'
-import { Member, ScreenConfigurations, ScreenResolution } from './types'
+  EVENT,
+  WebSocketEvents,
+  ControlEvents,
+  ScreenEvents,
+  AdminEvents,
+} from "./events";
+import { Member, ScreenConfigurations, ScreenResolution } from "./types";
 
 export type WebSocketMessages =
-    | WebSocketMessage
-    | SignalProvideMessage
-    | SignalOfferMessage
-    | SignalAnswerMessage
-    | SignalCandidateMessage
-    | MemberListMessage
-    | MemberConnectMessage
-    | MemberDisconnectMessage
-    | ControlMessage
-    | ScreenResolutionMessage
-    | ScreenConfigurationsMessage
+  | WebSocketMessage
+  | SignalProvideMessage
+  | SignalOfferMessage
+  | SignalAnswerMessage
+  | SignalCandidateMessage
+  | MemberListMessage
+  | MemberConnectMessage
+  | MemberDisconnectMessage
+  | ControlMessage
+  | ScreenResolutionMessage
+  | ScreenConfigurationsMessage;
 
 export type WebSocketPayloads =
-    | SignalProvidePayload
-    | SignalOfferPayload
-    | SignalAnswerPayload
-    | SignalCandidatePayload
-    | MemberListPayload
-    | Member
-    | ControlPayload
-    | ControlClipboardPayload
-    | ControlKeyboardPayload
-    | ScreenResolutionPayload
-    | ScreenConfigurationsPayload
-    | AdminPayload
-    | AdminLockPayload
-    | BroadcastStatusPayload
-    | BroadcastCreatePayload
+  | SignalProvidePayload
+  | SignalOfferPayload
+  | SignalAnswerPayload
+  | SignalCandidatePayload
+  | MemberListPayload
+  | Member
+  | ControlPayload
+  | ControlClipboardPayload
+  | ControlKeyboardPayload
+  | ScreenResolutionPayload
+  | ScreenConfigurationsPayload
+  | AdminPayload
+  | AdminLockPayload
+  | BroadcastStatusPayload
+  | BroadcastCreatePayload;
 
 export interface WebSocketMessage {
-    event: WebSocketEvents | string
+  event: WebSocketEvents | string;
 }
 
 /*
@@ -46,60 +46,68 @@ SYSTEM MESSAGES/PAYLOADS
 */
 // system/init
 export interface SystemInit extends WebSocketMessage, SystemInitPayload {
-    event: typeof EVENT.SYSTEM.INIT
+  event: typeof EVENT.SYSTEM.INIT;
 }
 export interface SystemInitPayload {
-    implicit_hosting: boolean
-    locks: Record<string, string>
+  implicit_hosting: boolean;
+  locks: Record<string, string>;
 }
 
 // system/disconnect
 // system/error
 export interface SystemMessage extends WebSocketMessage, SystemMessagePayload {
-    event: typeof EVENT.SYSTEM.DISCONNECT | typeof EVENT.SYSTEM.ERROR
+  event: typeof EVENT.SYSTEM.DISCONNECT | typeof EVENT.SYSTEM.ERROR;
 }
 export interface SystemMessagePayload {
-    title: string
-    message: string
+  title: string;
+  message: string;
 }
 
 /*
 SIGNAL MESSAGES/PAYLOADS
 */
 // signal/provide
-export interface SignalProvideMessage extends WebSocketMessage, SignalProvidePayload {
-    event: typeof EVENT.SIGNAL.PROVIDE
+export interface SignalProvideMessage
+  extends WebSocketMessage,
+    SignalProvidePayload {
+  event: typeof EVENT.SIGNAL.PROVIDE;
 }
 export interface SignalProvidePayload {
-    id: string
-    lite: boolean
-    ice: RTCIceServer[]
-    sdp: string
+  id: string;
+  lite: boolean;
+  ice: RTCIceServer[];
+  sdp: string;
 }
 
 // signal/offer
-export interface SignalOfferMessage extends WebSocketMessage, SignalOfferPayload {
-    event: typeof EVENT.SIGNAL.OFFER
+export interface SignalOfferMessage
+  extends WebSocketMessage,
+    SignalOfferPayload {
+  event: typeof EVENT.SIGNAL.OFFER;
 }
 export interface SignalOfferPayload {
-    sdp: string
+  sdp: string;
 }
 
 // signal/answer
-export interface SignalAnswerMessage extends WebSocketMessage, SignalAnswerPayload {
-    event: typeof EVENT.SIGNAL.ANSWER
+export interface SignalAnswerMessage
+  extends WebSocketMessage,
+    SignalAnswerPayload {
+  event: typeof EVENT.SIGNAL.ANSWER;
 }
 export interface SignalAnswerPayload {
-    sdp: string
-    displayname: string
+  sdp: string;
+  displayname: string;
 }
 
 // signal/candidate
-export interface SignalCandidateMessage extends WebSocketMessage, SignalCandidatePayload {
-    event: typeof EVENT.SIGNAL.CANDIDATE
+export interface SignalCandidateMessage
+  extends WebSocketMessage,
+    SignalCandidatePayload {
+  event: typeof EVENT.SIGNAL.CANDIDATE;
 }
 export interface SignalCandidatePayload {
-    data: string
+  data: string;
 }
 
 /*
@@ -107,24 +115,26 @@ MEMBER MESSAGES/PAYLOADS
 */
 // member/list
 export interface MemberListMessage extends WebSocketMessage, MemberListPayload {
-    event: typeof EVENT.MEMBER.LIST
+  event: typeof EVENT.MEMBER.LIST;
 }
 export interface MemberListPayload {
-    members: Member[]
+  members: Member[];
 }
 
 // member/connected
 export interface MemberConnectMessage extends WebSocketMessage, MemberPayload {
-    event: typeof EVENT.MEMBER.CONNECTED
+  event: typeof EVENT.MEMBER.CONNECTED;
 }
-export type MemberPayload = Member
+export type MemberPayload = Member;
 
 // member/disconnected
-export interface MemberDisconnectMessage extends WebSocketMessage, MemberPayload {
-    event: typeof EVENT.MEMBER.DISCONNECTED
+export interface MemberDisconnectMessage
+  extends WebSocketMessage,
+    MemberPayload {
+  event: typeof EVENT.MEMBER.DISCONNECTED;
 }
 export interface MemberDisconnectPayload {
-    id: string
+  id: string;
 }
 
 /*
@@ -132,86 +142,92 @@ CONTROL MESSAGES/PAYLOADS
 */
 // control/locked & control/release & control/request
 export interface ControlMessage extends WebSocketMessage, ControlPayload {
-    event: ControlEvents
+  event: ControlEvents;
 }
 export interface ControlPayload {
-    id: string
+  id: string;
 }
 
 export interface ControlTargetPayload {
-    id: string
-    target: string
+  id: string;
+  target: string;
 }
 
 export interface ControlClipboardPayload {
-    text: string
+  text: string;
 }
 
 export interface ControlKeyboardPayload {
-    layout?: string
-    capsLock?: boolean
-    numLock?: boolean
-    scrollLock?: boolean
+  layout?: string;
+  capsLock?: boolean;
+  numLock?: boolean;
+  scrollLock?: boolean;
 }
 
 /*
 SCREEN PAYLOADS
 */
-export interface ScreenResolutionMessage extends WebSocketMessage, ScreenResolutionPayload {
-    event: ScreenEvents
+export interface ScreenResolutionMessage
+  extends WebSocketMessage,
+    ScreenResolutionPayload {
+  event: ScreenEvents;
 }
 
 export interface ScreenResolutionPayload extends ScreenResolution {
-    id?: string
+  id?: string;
 }
 
-export interface ScreenConfigurationsMessage extends WebSocketMessage, ScreenConfigurationsPayload {
-    event: ScreenEvents
+export interface ScreenConfigurationsMessage
+  extends WebSocketMessage,
+    ScreenConfigurationsPayload {
+  event: ScreenEvents;
 }
 
 export interface ScreenConfigurationsPayload {
-    configurations: ScreenConfigurations
+  configurations: ScreenConfigurations;
 }
 
 /*
 BROADCAST PAYLOADS
 */
 export interface BroadcastCreatePayload {
-    url: string
+  url: string;
 }
 
 export interface BroadcastStatusPayload {
-    url: string
-    isActive: boolean
+  url: string;
+  isActive: boolean;
 }
 
 /*
 ADMIN PAYLOADS
 */
 export interface AdminMessage extends WebSocketMessage, AdminPayload {
-    event: AdminEvents
+  event: AdminEvents;
 }
 
 export interface AdminPayload {
-    id: string
+  id: string;
 }
 
-export interface AdminTargetMessage extends WebSocketMessage, AdminTargetPayload {
-    event: AdminEvents
+export interface AdminTargetMessage
+  extends WebSocketMessage,
+    AdminTargetPayload {
+  event: AdminEvents;
 }
 
 export interface AdminTargetPayload {
-    id: string
-    target?: string
+  id: string;
+  target?: string;
 }
 
 export interface AdminLockMessage extends WebSocketMessage, AdminLockPayload {
-    event: AdminEvents
-    id: string
+  event: AdminEvents;
+  id: string;
 }
 
-export type AdminLockResource = 'login' | 'control'
+export type AdminLockResource = "login" | "control";
 
 export interface AdminLockPayload {
-    resource: AdminLockResource
+  resource: AdminLockResource;
 }
