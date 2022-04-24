@@ -1,10 +1,12 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+  <div id="virtue">
+    <virtue-connect v-if="!connected" />
+    <notifications
+      group="virtue"
+      position="top left"
+      style="top: 50px; pointer-events: none"
+      :ignoreDuplicates="true"
+    />
   </div>
 </template>
 
