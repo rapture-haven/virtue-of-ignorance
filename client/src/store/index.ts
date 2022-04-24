@@ -5,6 +5,11 @@ import { get, set } from "@/utils/localstorage";
 import { EVENT } from "@/virtue-of-ignorance/events";
 import { AdminLockResource } from "@/virtue-of-ignorance/messages";
 
+import * as remote from './remote'
+import * as user from './user'
+import * as settings from './settings'
+import * as client from './client'
+
 export const state = () => ({
   displayname: get<string>("displayname", ""),
   password: get<string>("password", ""),
@@ -54,8 +59,7 @@ export const actions = actionTree(
   { state, mutations },
   {
     initialise(store) {
-      /*accessor.emoji.initialise()
-      accessor.settings.initialise()*/
+      accessor.settings.initialise()
     },
 
     lock(_, resource: AdminLockResource) {
@@ -96,7 +100,7 @@ export const storePattern = {
   state: state,
   mutations: mutations,
   actions: actions,
-  modules: {},
+  modules: { user, remote, settings, client },
 };
 
 Vue.use(Vuex);

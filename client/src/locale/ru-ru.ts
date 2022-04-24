@@ -5,7 +5,6 @@ export const you = 'Вы'
 export const somebody = 'Кто-то'
 
 export const side = {
-  chat: 'Чат',
   settings: 'Настройки',
 }
 
@@ -76,7 +75,6 @@ export const setting = {
   scroll_invert: 'Инвертировать прокрутку',
   autoplay: 'Автовоспроизведение видео',
   ignore_emotes: 'Игнорировать эмоции',
-  chat_sound: 'Проигрывать звук чата',
   keyboard_layout: 'Раскладка клавиатуры',
   broadcast_title: 'Прямой эфир',
 }

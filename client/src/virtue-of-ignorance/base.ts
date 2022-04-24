@@ -65,6 +65,7 @@ export abstract class BaseClient extends EventEmitter<BaseEvents> {
 
     console.log("connected");
     this._connected = true;
+    this._id = '123';
     this[EVENT.CONNECTED]();
     // TODO: connect
     // throw new Error('Method not implemented.')

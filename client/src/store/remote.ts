@@ -105,7 +105,7 @@ export const actions = actionTree(
       }
 
       if (typeof member === 'string') {
-        member = accessor.user.members[member]
+        member = accessor.user.members[member] as Member
       }
 
       if (!member) {
@@ -137,7 +137,7 @@ export const actions = actionTree(
       }
 
       if (typeof member === 'string') {
-        member = accessor.user.members[member]
+        member = accessor.user.members[member] as Member
       }
 
       if (!member) {

@@ -54,22 +54,43 @@ export class VirtueClient
     this.url = url;
   }
 
+  private cleanup() {
+    this.$accessor.setConnected(false)
+    this.$accessor.remote.reset()
+    this.$accessor.user.reset()
+    this.$accessor.video.reset()
+  }
+  
   login(password: string, displayname: string) {
     this.connect(this.url, password, displayname);
   }
 
   logout() {
     this.disconnect();
+    this.cleanup()
+    this.$vue.$swal({
+      title: this.$vue.$t('connection.logged_out'),
+      icon: 'info',
+      confirmButtonText: this.$vue.$t('connection.button_confirm') as string,
+    })
   }
 
   protected [EVENT.RECONNECTING](): void {
-    throw new Error("Method not implemented.");
+    this.$vue.$notify({
+      group: 'neko',
+      type: 'warning',
+      title: this.$vue.$t('connection.reconnecting') as string,
+      duration: 5000,
+      speed: 1000,
+    })
   }
+
   protected [EVENT.CONNECTING](): void {
     this.$accessor.setConnnecting();
   }
+
   protected [EVENT.CONNECTED](): void {
-    // this.$accessor.user.setMember(this.id)
+    this.$accessor.user.setMember(this.id)
     this.$accessor.setConnected(true);
 
     this.$vue.$notify({
@@ -85,13 +106,23 @@ export class VirtueClient
       speed: 1000,
     });
   }
+
   protected [EVENT.DISCONNECTED](reason?: Error): void {
-    throw new Error("Method not implemented.");
+    this.cleanup()
+
+    this.$vue.$notify({
+      group: 'neko',
+      type: 'error',
+      title: this.$vue.$t('connection.disconnected') as string,
+      text: reason ? reason.message : undefined,
+      duration: 5000,
+      speed: 1000,
+    })
   }
+
   protected [EVENT.TRACK](event: RTCTrackEvent): void {
     throw new Error("Method not implemented.");
   }
-  protected [EVENT.DATA](data: any): void {
-    throw new Error("Method not implemented.");
-  }
+  
+  protected [EVENT.DATA](data: any): void { }
 }

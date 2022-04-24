@@ -10,10 +10,12 @@ import Client from "./plugins/virtue-of-ignorance";
 import Logger from "./plugins/log";
 import Swal from "./plugins/swal";
 import Axios from './plugins/axios'
+import ToolTip from 'v-tooltip'
 
 Vue.config.productionTip = false;
 
 Vue.use(Notifications);
+Vue.use(ToolTip)
 Vue.use(Logger);
 Vue.use(Swal);
 Vue.use(Client);

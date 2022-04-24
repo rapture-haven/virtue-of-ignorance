@@ -15,7 +15,6 @@ export const state = () => {
     scroll_invert: get<boolean>('scroll_invert', true),
     autoplay: get<boolean>('autoplay', true),
     ignore_emotes: get<boolean>('ignore_emotes', false),
-    chat_sound: get<boolean>('chat_sound', true),
     keyboard_layout: get<string>('keyboard_layout', 'us'),
 
     keyboard_layouts_list: {} as KeyboardLayouts,
@@ -46,11 +45,6 @@ export const mutations = mutationTree(state, {
   setIgnore(state, value: boolean) {
     state.ignore_emotes = value
     set('ignore_emotes', value)
-  },
-
-  setSound(state, value: boolean) {
-    state.chat_sound = value
-    set('chat_sound', value)
   },
 
   setKeyboardLayout(state, value: string) {
