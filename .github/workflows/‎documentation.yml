@@ -1,0 +1,33 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  server-docs:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+
+    name: Server documentation
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Generate GoDoc
+      run: |
+        godoc -http localhost:8080
+
+      uses: ktr0731/godoc-action@v0.1.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages

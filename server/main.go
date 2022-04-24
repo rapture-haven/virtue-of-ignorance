@@ -1,3 +1,4 @@
+/* Example main doc */
 package main
 
 import "fmt"
