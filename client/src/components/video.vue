@@ -331,12 +331,13 @@ export default class extends Vue {
   }
 
   get pip_available() {
+    /* eslint-disable @typescript-eslint/ban-ts-comment */
     return (
-      // eslint-disable-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       typeof document.createElement("video").requestPictureInPicture ===
       "function"
     );
+    /* eslint-enable @typescript-eslint/ban-ts-comment */
   }
 
   get clipboard_read_available() {
