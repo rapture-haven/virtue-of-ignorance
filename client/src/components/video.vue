@@ -332,10 +332,10 @@ export default class extends Vue {
 
   get pip_available() {
     return (
-        // eslint-disable-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        typeof document.createElement("video").requestPictureInPicture ===
-        "function"
+      // eslint-disable-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      typeof document.createElement("video").requestPictureInPicture ===
+      "function"
     );
   }
 
