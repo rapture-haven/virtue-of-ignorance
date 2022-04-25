@@ -1,0 +1,14 @@
+version: "3.4"
+services:
+  neko:
+    image: "oktomx/screen-app:firefox"
+    restart: "unless-stopped"
+    shm_size: "2gb"
+    ports:
+      - "8090:8090"
+      - "53000-53100:53000-53100/udp"
+    environment:
+      APP_SCREEN: 1920x1080@30
+      APP_PASSWORD: password
+      APP_PASSWORD_ADMIN: admin
+      APP_EPR: 53000-53100
