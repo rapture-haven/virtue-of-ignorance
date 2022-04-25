@@ -1,7 +1,7 @@
 import { getterTree, mutationTree, actionTree } from 'typed-vuex'
-import { get, set } from '@/utils/localstorage'
-import { EVENT } from '@/virtue-of-ignorance/events'
-import { accessor } from '@/store'
+import { get, set } from '~/utils/localstorage'
+import { EVENT } from '~/neko/events'
+import { accessor } from '~/store'
 
 export const namespaced = true
 

@@ -1,28 +1,35 @@
-import "./assets/styles/main.scss";
+import './assets/styles/main.scss'
 
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
+import Vue from 'vue'
 
-import Notifications from "vue-notification";
-import Client from "./plugins/virtue-of-ignorance";
-import Logger from "./plugins/log";
-import Swal from "./plugins/swal";
+import Notifications from 'vue-notification'
+import ToolTip from 'v-tooltip'
+import Logger from './plugins/log'
+import Client from './plugins/neko'
+import Axios from './plugins/axios'
+import Swal from './plugins/swal'
+import Anime from './plugins/anime'
 
-Vue.config.productionTip = false;
+import { i18n } from './plugins/i18n'
+import store from './store'
+import app from './app.vue'
 
-Vue.use(Notifications);
-Vue.use(Logger);
-Vue.use(Swal);
-Vue.use(Client);
+Vue.config.productionTip = false
+
+Vue.use(Logger)
+Vue.use(Notifications)
+Vue.use(ToolTip)
+Vue.use(Axios)
+Vue.use(Swal)
+Vue.use(Anime)
+Vue.use(Client)
 
 new Vue({
-  router,
+  i18n,
   store,
-  render: (h) => h(App),
+  render: (h) => h(app),
   created() {
-    this.$client.init(this);
-    this.$accessor.initialise();
+    this.$client.init(this)
+    this.$accessor.initialise()
   },
-}).$mount("#app");
+}).$mount('#neko')

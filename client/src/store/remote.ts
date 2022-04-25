@@ -1,7 +1,7 @@
 import { getterTree, mutationTree, actionTree } from 'typed-vuex'
-import { Member } from '@/virtue-of-ignorance/types'
-import { EVENT } from '@/virtue-of-ignorance/events'
-import { accessor } from '@/store'
+import { Member } from '~/neko/types'
+import { EVENT } from '~/neko/events'
+import { accessor } from '~/store'
 
 const keyboardModifierState = (capsLock: boolean, numLock: boolean, scrollLock: boolean) =>
   Number(capsLock) + 2 * Number(numLock) + 4 * Number(scrollLock)

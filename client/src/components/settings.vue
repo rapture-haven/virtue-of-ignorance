@@ -22,6 +22,20 @@
         </label>
       </li>
       <li>
+        <span>{{ $t('setting.ignore_emotes') }}</span>
+        <label class="switch">
+          <input type="checkbox" v-model="ignore_emotes" />
+          <span />
+        </label>
+      </li>
+      <li>
+        <span>{{ $t('setting.chat_sound') }}</span>
+        <label class="switch">
+          <input type="checkbox" v-model="chat_sound" />
+          <span />
+        </label>
+      </li>
+      <li>
         <span>{{ $t('setting.keyboard_layout') }}</span>
         <label class="select">
           <select v-model="keyboard_layout">
@@ -292,7 +306,7 @@
 <script lang="ts">
   import { Component, Ref, Watch, Vue } from 'vue-property-decorator'
 
-  @Component({ name: 'virtue-of-ignorance-settings' })
+  @Component({ name: 'neko-settings' })
   export default class extends Vue {
     private broadcast_url: string = ''
 
@@ -326,6 +340,22 @@
 
     set autoplay(value: boolean) {
       this.$accessor.settings.setAutoplay(value)
+    }
+
+    get ignore_emotes() {
+      return this.$accessor.settings.ignore_emotes
+    }
+
+    set ignore_emotes(value: boolean) {
+      this.$accessor.settings.setIgnore(value)
+    }
+
+    get chat_sound() {
+      return this.$accessor.settings.chat_sound
+    }
+
+    set chat_sound(value: boolean) {
+      this.$accessor.settings.setSound(value)
     }
 
     get keyboard_layouts_list() {
