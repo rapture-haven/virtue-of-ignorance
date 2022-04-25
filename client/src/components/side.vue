@@ -2,6 +2,10 @@
   <aside class="neko-menu">
     <div class="tabs-container">
       <ul>
+        <li :class="{ active: tab === 'chat' }" @click.stop.prevent="change('chat')">
+          <i class="fas fa-comment-alt" />
+          <span>{{ $t('side.chat') }}</span>
+        </li>
         <li :class="{ active: tab === 'settings' }" @click.stop.prevent="change('settings')">
           <i class="fas fa-sliders-h" />
           <span>{{ $t('side.settings') }}</span>
@@ -9,6 +13,7 @@
       </ul>
     </div>
     <div class="page-container">
+      <neko-chat v-if="tab === 'chat'" />
       <neko-settings v-if="tab === 'settings'" />
     </div>
   </aside>

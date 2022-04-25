@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-    <a href="https://github.com/rapture-haven/virtue-of-ignorance/" title="Github repository" target="_blank" class="neko">
-      <img src="@/assets/images/logo.png" alt="virtue" />
-      <span>virtue</span>
+    <a href="https://github.com/m1k1o/neko" title="Github repository" target="_blank" class="neko">
+      <img src="@/assets/images/logo.svg" alt="n.eko" />
+      <span><b>n</b>.eko</span>
     </a>
     <ul class="menu">
       <li>
