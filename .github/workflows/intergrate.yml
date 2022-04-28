@@ -9,25 +9,6 @@ on:
       - main
 
 jobs:
-  client-build-test:
-    name: Client build and test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
-          cache-dependency-path: 'client/package-lock.json'
-
-      - name: Install dependencies and build project
-        working-directory: client
-        run: |
-          npm ci
-          npm run build
-          npm run lint
-          npm run test:unit
-
   server-build-test:
     name: Server build and test
     runs-on: ubuntu-latest
@@ -37,16 +18,8 @@ jobs:
         with:
           go-version: 1.17
 
-      - name: Install dependencies
-        run: sudo apt update && sudo apt install libsnmp-dev
-
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Run linters
-        uses: golangci/golangci-lint-action@v3
-        with:
-          working-directory: server
 
       - name: Install dependencies
         run: go mod tidy
