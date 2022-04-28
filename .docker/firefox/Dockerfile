@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=oktomx/screen-app:base
+ARG BASE_IMAGE=base:base
 FROM $BASE_IMAGE
 
 ARG SRC_URL="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
@@ -17,8 +17,8 @@ RUN set -eux; apt-get update; \
     ln -s /usr/lib/firefox/firefox /usr/bin/firefox; \
     #
     # create a profile directory
-    mkdir -p /home/app/.mozilla/firefox/profile.default/extensions; \
-    chown -R app:app /home/app/.mozilla/firefox/profile.default; \
+    mkdir -p /home/user/.mozilla/firefox/profile.default/extensions; \
+    chown -R user:user /home/user/.mozilla/firefox/profile.default; \
     #
     # clean up
     apt-get --purge autoremove -y xz-utils bzip2; \
@@ -26,9 +26,9 @@ RUN set -eux; apt-get update; \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 #
-COPY supervisord.conf /etc/app/supervisord/firefox.conf
+COPY supervisord.conf /etc/user/supervisord/firefox.conf
 COPY app.js /usr/lib/firefox/mozilla.cfg
 COPY autoconfig.js /usr/lib/firefox/defaults/pref/autoconfig.js
 COPY policies.json /usr/lib/firefox/distribution/policies.json
-COPY --chown=app profiles.ini /home/app/.mozilla/firefox/profiles.ini
-COPY openbox.xml /etc/app/openbox.xml
+COPY --chown=user profiles.ini /home/user/.mozilla/firefox/profiles.ini
+COPY openbox.xml /etc/user/openbox.xml
