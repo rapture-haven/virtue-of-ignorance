@@ -25,7 +25,7 @@ RUN set -eux; apt-get update; \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 COPY server/ .
-RUN go get -v -t -d . && go build -o bin/app cmd/app/main.go
+RUN go get -v -t -d . && go build -o bin/app cmd/template/main.go
 
 FROM node:14-bullseye-slim as client
 WORKDIR /src
