@@ -9,6 +9,25 @@ on:
       - main
 
 jobs:
+  client-build-test:
+    name: Client build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+          cache-dependency-path: 'client/package-lock.json'
+
+      - name: Install dependencies and build project
+        working-directory: client
+        run: |
+          npm ci
+          npm run build
+          npm run lint
+          npm run test:unit
+
   server-build-test:
     name: Server build and test
     runs-on: ubuntu-latest
