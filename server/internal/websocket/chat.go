@@ -30,7 +30,7 @@ func (h *MessageHandler) chatEmote(id string, session types.Session, payload *me
 
 	if err := h.sessions.Broadcast(
 		message.EmoteSend{
-			Event: event.CHAT_EMOTE,
+			Event: event.CHAT_EMOJI,
 			Emote: payload.Emote,
 			ID:    id,
 		}, nil); err != nil {

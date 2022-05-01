@@ -30,11 +30,6 @@ const (
 )
 
 const (
-	CHAT_MESSAGE = "chat/message"
-	CHAT_EMOTE   = "chat/emote"
-)
-
-const (
 	SCREEN_CONFIGURATIONS = "screen/configurations"
 	SCREEN_RESOLUTION     = "screen/resolution"
 	SCREEN_SET            = "screen/set"
@@ -56,4 +51,9 @@ const (
 	ADMIN_CONTROL = "admin/control"
 	ADMIN_RELEASE = "admin/release"
 	ADMIN_GIVE    = "admin/give"
+)
+
+const (
+	CHAT_MESSAGE = "chat/message"
+	CHAT_EMOJI   = "chat/emoji"
 )
